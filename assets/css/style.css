@@ -1,44 +1,72 @@
-body, aside, main {
-  display: flex;
-  flex-direction: column;
-}
-
 body {
   background-image: url('../images/lfz-background.jpg');
+  display: flex;
+  flex-flow: row wrap;
+  font-size: 0;
+  justify-content: space-around;
 }
 
-.headerPortion {
+header {
   background-color: pink;
   border: 2px solid black;
-  height: 100px;
   text-align: center;
-  vertical-align: middle;
   font-weight: bold;
   font-size: 3.0rem;
+  height: 10%;
+  width: 99%;
+  margin: 0 0 1vh 0;
 }
 
-.cardsWillBeHere {
-  width: 600px;
-  height: 900px;
+main {
+  width: 79vw;
+  height: 90vh;
   border: 2px solid black;
   background-color: yellow;
 }
 
-.container {
-  height: 100%;
-  display: flex;
-}
-.card {
-  width: 100px;
-  height: 150px;
-  background-color: red;
-  border: 1px solid black;
-  not
-}
-
-.stats {
-  width: 200px;
-  height: 900px;
+aside {
+  width: 18vw;
+  height: 90vh;
   background-color: chartreuse;
   border: 2px solid black;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+}
+aside > div {
+  width: 75%;
+  height: 11%;
+  background-color: purple;
+  margin: 3px;
+}
+
+.name{
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.textContent{
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  align-content: center;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: center;
+}
+.card {
+  width: 12vw;
+  height: 12vw;
+  background-color: red;
+  border: 1px solid black;
+  margin: 3px;
 }
