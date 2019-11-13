@@ -78,12 +78,19 @@ aside > div {
   height: 100%;
   width: 100%
 }
-.card > .front {
+div.card:nth-of-type(1) > div.front {
+  background-image: url("../images/js-logo.png");
+}
+div.card:nth-of-type(2) > div.front {
+  background-image: url("../images/gitHub-logo.png");
+}
+div.card:nth-of-type(3) > div.front {
   background-image: url("../images/js-logo.png");
 }
 .card > .back {
   background-image: url("../images/lfz-card.jpg");
 }
+
 .hidden {
   display: none;
 }
