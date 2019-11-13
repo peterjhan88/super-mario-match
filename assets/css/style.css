@@ -22,6 +22,7 @@ main {
   height: 90vh;
   border: 2px solid black;
   background-color: yellow;
+  position:relative;
 }
 
 aside {
@@ -78,6 +79,54 @@ aside > div {
   height: 100%;
   width: 100%
 }
+.card > .back {
+  background-image: url("../images/lfz-card.jpg");
+}
+
+.hidden {
+  display: none;
+}
+
+.myModal {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  text-align: center;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+}
+.myModalContent {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  background-color: skyblue;
+  width: 50%;
+  height: 35%;
+  border-radius: 5%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+.myModalText{
+  width: 100%;
+  height: 40%;
+}
+.myModalBtn {
+  width: 20vmin;
+  height: 5vmin;
+  border-radius: 5%;
+  font-size: 3rem;
+  background-color: blue;
+  text-align: center;
+  margin: auto;
+}
+
 div.card:nth-of-type(1) > div.front {
   background-image: url("../images/js-logo.png");
 }
@@ -87,10 +136,6 @@ div.card:nth-of-type(2) > div.front {
 div.card:nth-of-type(3) > div.front {
   background-image: url("../images/js-logo.png");
 }
-.card > .back {
-  background-image: url("../images/lfz-card.jpg");
-}
-
-.hidden {
-  display: none;
+div.card:nth-of-type(4) > div.front {
+  background-image: url("../images/gitHub-logo.png");
 }
