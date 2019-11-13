@@ -69,4 +69,21 @@ aside > div {
   background-color: red;
   border: 1px solid black;
   margin: 3px;
+  position: relative;
+}
+.front, .back {
+  position: absolute;
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  width: 100%
+}
+.card > .front {
+  background-image: url("../images/js-logo.png");
+}
+.card > .back {
+  background-image: url("../images/lfz-card.jpg");
+}
+.hidden {
+  display: none;
 }
