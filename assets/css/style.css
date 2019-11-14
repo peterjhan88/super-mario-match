@@ -7,7 +7,6 @@ body {
 }
 
 header {
-  /* background-color: pink; */
   border: 2px solid black;
   text-align: center;
   font-weight: bold;
@@ -21,14 +20,12 @@ main {
   width: 79vw;
   height: 89vh;
   border: 2px solid black;
-  /* background-color: yellow; */
   position:relative;
 }
 
 aside {
   width: 18vw;
   height: 89vh;
-  /* background-color: chartreuse; */
   border: 2px solid black;
   display: flex;
   flex-flow: column nowrap;
@@ -39,7 +36,6 @@ aside {
 aside > div {
   width: 75%;
   height: 11%;
-  /* background-color: purple; */
   margin: 3px;
 }
 
@@ -71,7 +67,6 @@ aside > div {
 .card {
   width: 12vw;
   height: 12vw;
-  /* background-color: red; */
   border: 1px solid black;
   margin: 3px;
   position: relative;
@@ -129,17 +124,4 @@ aside > div {
   background-color: blue;
   text-align: center;
   margin: auto;
-}
-
-div.card:nth-of-type(1) > div.front {
-  background-image: url("../images/js-logo.png");
-}
-div.card:nth-of-type(2) > div.front {
-  background-image: url("../images/gitHub-logo.png");
-}
-div.card:nth-of-type(3) > div.front {
-  background-image: url("../images/js-logo.png");
-}
-div.card:nth-of-type(4) > div.front {
-  background-image: url("../images/gitHub-logo.png");
 }

@@ -28,12 +28,11 @@ function handleCardClick(event){
   } else if (!selectedCard.hasClass('clicked') && !secondCardClicked){
     secondCardClicked = selectedCard.addClass('clicked');
   }
-  // debugger;
   if(firstCardClicked  &&  secondCardClicked){
     var firstCardUrl = firstCardClicked.find(".front").css("background-image");
     var secondCardUrl = secondCardClicked.find(".front").css("background-image");
 
-    if (firstCardUrl !== secondCardUrl){ // no match
+    if (firstCardUrl !== secondCardUrl){
       console.log("NOPE!")
       setTimeout(function () {
         firstCardClicked.find('.back').removeClass("hidden");
@@ -42,7 +41,6 @@ function handleCardClick(event){
         secondCardClicked.removeClass("clicked");
         firstCardClicked = null;
         secondCardClicked = null;
-        // for later use, back to null
       }, 500);
     } else {
       console.log("WOW!!!!!!");
