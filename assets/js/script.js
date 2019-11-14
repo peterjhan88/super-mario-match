@@ -22,7 +22,7 @@ function initializeApp(){
 function handleCardClick(event){
   var selectedCard = $(event.currentTarget);
   selectedCard.find('.back').addClass("hidden");
-  if (!firstCardClicked) {
+  if (!firstCardClicked && !selectedCard.hasClass('clicked')) {
     firstCardClicked = selectedCard.addClass('clicked');
     return;
   } else if (!selectedCard.hasClass('clicked') && !secondCardClicked){
@@ -118,4 +118,9 @@ function newGame() {
   closeModal();
   $('.card > .back').removeClass('hidden');
   $('.card').removeClass('clicked');
+}
+
+function test(){
+  newGame();
+  $('.back').addClass('hidden');
 }
