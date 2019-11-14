@@ -4,7 +4,7 @@ var secondCardClicked = null;
 
 var matches = null;
 var attempts = 0;
-var max_matches = 1;
+var max_matches = 9;
 var gameNumber = 1;
 
 var pictures = ["css-logo.png",'docker-logo.jpg','gitHub-logo.png',
@@ -83,18 +83,16 @@ function closeModal(){
 }
 
 function newGame(){
-  matches =0;
-  attempts=0;
+  matches = 0;
+  attempts = 0;
   updateAttempts();
   updateMatch();
   updateGamePlayed();
-  var randomArrayOfPictures = [];
-  randomArrayOfPictures = pictures.concat(pictures);
-  randomArrayOfPictures = randomOrder(randomArrayOfPictures);
-  closeModal();
+  var randomArrayOfPictures = randomOrder(pictures.concat(pictures));
   populateCards(randomArrayOfPictures);
+  closeModal();
   $('.card > .back').removeClass('hidden');
-  $('.card > .back').removeClass('clicked');
+  $('.card').removeClass('clicked');
 }
 
 function randomOrder(picturesArr) {
