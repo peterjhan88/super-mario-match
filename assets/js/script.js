@@ -11,15 +11,12 @@ var pictures = ["css-logo.png",'docker-logo.jpg','gitHub-logo.png',
                 'html-logo.png','js-logo.png','mysql-logo.jpg',
                 'node-logo.png','php-logo.jpeg','react-logo.png'];
 
-
 function initializeApp(){
-
   newGame();
 
   $('.card').on("click", handleCardClick);
   $("#myModalBtnYes").on("click", newGame);
   $("#myModalBtnNo").on("click", closeModal);
-
 }
 
 function handleCardClick(event){
@@ -78,21 +75,13 @@ function updateAttempts(){
   $("#attempts").text(attempts);
 }
 
-function closeModal(){
-  $('.myModal').addClass("hidden");
+function updateGamePlayed() {
+  $('#gameRounds').text(gameNumber);
+  gameNumber++;
 }
 
-function newGame(){
-  matches = 0;
-  attempts = 0;
-  updateAttempts();
-  updateMatch();
-  updateGamePlayed();
-  var randomArrayOfPictures = randomOrder(pictures.concat(pictures));
-  populateCards(randomArrayOfPictures);
-  closeModal();
-  $('.card > .back').removeClass('hidden');
-  $('.card').removeClass('clicked');
+function closeModal(){
+  $('.myModal').addClass("hidden");
 }
 
 function randomOrder(picturesArr) {
@@ -120,7 +109,15 @@ function populateCards(picturesArray){
   }
 }
 
-function updateGamePlayed(){
-  $('#gameRounds').text(gameNumber);
-  gameNumber++;
+function newGame() {
+  matches = 0;
+  attempts = 0;
+  updateAttempts();
+  updateMatch();
+  updateGamePlayed();
+  var randomArrayOfPictures = randomOrder(pictures.concat(pictures));
+  populateCards(randomArrayOfPictures);
+  closeModal();
+  $('.card > .back').removeClass('hidden');
+  $('.card').removeClass('clicked');
 }
