@@ -10,7 +10,7 @@ header {
   border: 2px solid black;
   text-align: center;
   font-weight: bold;
-  font-size: 3.0rem;
+  font-size: 5vmin;
   height: 10vh;
   width: 99%;
   margin: 0 0 1vh 0;
@@ -40,13 +40,13 @@ aside > div {
 }
 
 .name{
-  font-size: 5rem;
+  font-size: 5vmin;
   font-weight: bold;
   text-align: center;
 }
 
 .textContent{
-  font-size: 3rem;
+  font-size: 3vmin;
   font-weight: bold;
   text-align: center;
   align-content: center;
@@ -65,8 +65,8 @@ aside > div {
   align-content: center;
 }
 .card {
-  width: 12vw;
-  height: 12vw;
+  width: 16vmin;
+  height: 20vmin;
   border: 1px solid black;
   margin: 3px;
   position: relative;
@@ -100,7 +100,7 @@ aside > div {
   align-items: center;
 }
 .myModalContent {
-  font-size: 3rem;
+  font-size: 3vmin;
   font-weight: bold;
   text-align: center;
   background-color: skyblue;
@@ -120,7 +120,7 @@ aside > div {
   width: 20vmin;
   height: 5vmin;
   border-radius: 5%;
-  font-size: 3rem;
+  font-size: 3vmin;
   background-color: blue;
   text-align: center;
   margin: auto;

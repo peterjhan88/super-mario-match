@@ -17,6 +17,7 @@ function initializeApp(){
   $('.card').on("click", handleCardClick);
   $("#myModalBtnYes").on("click", newGame);
   $("#myModalBtnNo").on("click", closeModal);
+  $('#accuracy').on("click", showModal);
 }
 
 function handleCardClick(event){
@@ -56,7 +57,7 @@ function handleCardClick(event){
   }
 
   if(matches === max_matches){
-    $('.myModal').removeClass('hidden');
+    showModal();
   }
 }
 
@@ -76,6 +77,10 @@ function updateAttempts(){
 function updateGamePlayed() {
   $('#gameRounds').text(gameNumber);
   gameNumber++;
+}
+
+function showModal(){
+  $('.myModal').removeClass('hidden');
 }
 
 function closeModal(){
@@ -120,7 +125,7 @@ function newGame() {
   $('.card').removeClass('clicked');
 }
 
-function test(){
+function show_me_the_money(){
   newGame();
   $('.back').addClass('hidden');
 }
