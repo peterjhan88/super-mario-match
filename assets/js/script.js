@@ -17,7 +17,6 @@ function initializeApp(){
   $('.card').on("click", handleCardClick);
   $("#myModalBtnYes").on("click", newGame);
   $("#myModalBtnNo").on("click", closeModal);
-  $('#accuracy').on("click", showModal);
 }
 
 function handleCardClick(event){
@@ -34,7 +33,6 @@ function handleCardClick(event){
     var secondCardUrl = secondCardClicked.find(".front").css("background-image");
 
     if (firstCardUrl !== secondCardUrl){
-      console.log("NOPE!")
       setTimeout(function () {
         firstCardClicked.find('.back').removeClass("hidden");
         secondCardClicked.find('.back').removeClass("hidden");
@@ -44,7 +42,6 @@ function handleCardClick(event){
         secondCardClicked = null;
       }, 500);
     } else {
-      console.log("WOW!!!!!!");
       matches += 1;
       firstCardClicked.filter(".back").addClass("hidden");
       secondCardClicked.filter(".back").addClass("hidden");
@@ -75,6 +72,7 @@ function updateAttempts(){
 }
 
 function updateGamePlayed() {
+  // game round should only be incremental, unless the page is fully reloaded.
   $('#gameRounds').text(gameNumber);
   gameNumber++;
 }
@@ -113,19 +111,34 @@ function populateCards(picturesArray){
 }
 
 function newGame() {
+  //reset stats value, except game round
   matches = 0;
   attempts = 0;
   updateAttempts();
   updateMatch();
   updateGamePlayed();
+
+  //new randomized pictures
   var randomArrayOfPictures = randomOrder(pictures.concat(pictures));
   populateCards(randomArrayOfPictures);
+
+  //hide modal
   closeModal();
+
+  //back cards reappear(meaning hide front card)
   $('.card > .back').removeClass('hidden');
+
+  // now all cards should be not clicked
   $('.card').removeClass('clicked');
+
+  // necessary to show all card when game starts
+  $('.card > .back').addClass('hidden');
+  setTimeout(function () {
+    $('.card > .back').removeClass('hidden');
+  },1000);
 }
 
-function show_me_the_money(){
+function showmethemoney(){
   newGame();
   $('.back').addClass('hidden');
 }
