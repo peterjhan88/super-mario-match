@@ -51,12 +51,6 @@ aside > div {
   margin: auto;
 }
 
-.name{
-  font-size: 7vmin;
-  font-weight: bold;
-  text-align: center;
-}
-
 .textContent{
   font-size: 3vmin;
   font-weight: bold;
@@ -67,8 +61,8 @@ aside > div {
   border-right: 3px solid rgba(4,136,247,0.5);
   border-bottom: 3px solid rgba(0,128,255,1);
 }
-.textContent:nth-child(odd){
-  font-size: 5vmin;
+.textContent:nth-child(even){
+  font-size: 4vmin;
   padding: 4% 0 0 0;
 }
 
