@@ -111,6 +111,8 @@ function populateCards(picturesArray){
 }
 
 function newGame() {
+  cardSlotCreation();
+
   //reset stats value, except game round
   matches = 0;
   attempts = 0;
@@ -141,4 +143,14 @@ function newGame() {
 function showmethemoney(){
   newGame();
   $('.back').addClass('hidden');
+}
+
+function cardSlotCreation(){
+  for(var index=0; index<18; index++){
+    var cardDiv = $('<div>').addClass('card');
+    var frontCard = $('<div>').addClass('front');
+    var backCard = $('<div>').addClass('back');
+    cardDiv.append(frontCard, backCard)
+    $('div.container').append(cardDiv);
+  }
 }
