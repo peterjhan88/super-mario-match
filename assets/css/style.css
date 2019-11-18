@@ -1,5 +1,7 @@
 body {
   background-image: url('../images/lfz-background.jpg');
+  background-size: cover;
+  background-position: top;
   display: flex;
   flex-flow: row wrap;
   font-size: 0;
