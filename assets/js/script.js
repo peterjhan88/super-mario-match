@@ -127,9 +127,6 @@ function newGame() {
   //hide modal
   closeModal();
 
-  //back cards reappear(meaning hide front card)
-  $('.card > .back').removeClass('hidden');
-
   // now all cards should be not clicked
   $('.card').removeClass('clicked');
 
@@ -141,16 +138,17 @@ function newGame() {
 }
 
 function showmethemoney(){
-  newGame();
-  $('.back').addClass('hidden');
+  $('.card > .back').addClass('hidden');
 }
 
 function cardSlotCreation(){
+  var newContainer = $('<div>').addClass('container');
   for(var index=0; index<18; index++){
     var cardDiv = $('<div>').addClass('card');
     var frontCard = $('<div>').addClass('front');
     var backCard = $('<div>').addClass('back');
     cardDiv.append(frontCard, backCard)
-    $('div.container').append(cardDiv);
+    newContainer.append(cardDiv);
   }
+  $('main > div.container').replaceWith(newContainer);
 }
