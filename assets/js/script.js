@@ -14,7 +14,7 @@ var pictures = ["css-logo.png",'docker-logo.jpg','gitHub-logo.png',
 function initializeApp(){
   newGame();
 
-  $('.card').on("click", handleCardClick);
+  $('main').on("click", ".card", handleCardClick);
   $("#myModalBtnYes").on("click", newGame);
   $("#myModalBtnNo").on("click", closeModal);
 }
@@ -23,16 +23,19 @@ function handleCardClick(event){
   var selectedCard = $(event.currentTarget);
   selectedCard.find('.back').addClass("hidden");
   if (!firstCardClicked && !selectedCard.hasClass('clicked')) {
-    firstCardClicked = selectedCard.addClass('clicked');
+    firstCardClicked = selectedCard;
+    firstCardClicked.addClass('clicked');
     return;
   } else if (!selectedCard.hasClass('clicked') && !secondCardClicked){
     secondCardClicked = selectedCard.addClass('clicked');
   }
+
   if(firstCardClicked  &&  secondCardClicked){
     var firstCardUrl = firstCardClicked.find(".front").css("background-image");
     var secondCardUrl = secondCardClicked.find(".front").css("background-image");
 
     if (firstCardUrl !== secondCardUrl){
+      $("div.container").addClass("pointerEventDisabled");
       setTimeout(function () {
         firstCardClicked.find('.back').removeClass("hidden");
         secondCardClicked.find('.back').removeClass("hidden");
@@ -40,7 +43,8 @@ function handleCardClick(event){
         secondCardClicked.removeClass("clicked");
         firstCardClicked = null;
         secondCardClicked = null;
-      }, 500);
+        $("div.container").removeClass("pointerEventDisabled");
+      }, 1000);
     } else {
       matches += 1;
       firstCardClicked.filter(".back").addClass("hidden");
@@ -135,6 +139,8 @@ function newGame() {
   setTimeout(function () {
     $('.card > .back').removeClass('hidden');
   },1000);
+
+  $("div.container").removeClass("pointerEventDisabled");
 }
 
 function showmethemoney(){

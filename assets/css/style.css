@@ -136,3 +136,7 @@ aside > div {
   text-align: center;
   margin: auto;
 }
+
+.pointerEventDisabled{
+  pointer-events: none;
+}
