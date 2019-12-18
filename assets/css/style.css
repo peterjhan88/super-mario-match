@@ -1,0 +1,126 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  border: 1px solid black;
+}
+
+.my-body {
+  width: 100%;
+  height: 100vh;
+}
+
+.my-body,
+.my-header,
+.my-aside,
+.game-board,
+.stats,
+.stats-name,
+.stats-value,
+.my-modal,
+.modal-body,
+.modal-title,
+.modal-content,
+.modal-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.my-body, .card {
+  position: relative;
+}
+
+.my-body {
+  flex-flow: row wrap;
+}
+
+.my-header {
+  width: 100%;
+  height: 15%;
+  background-color: red;
+}
+
+.my-aside {
+  width: 18%;
+  height: 85%;
+  flex-flow: row wrap;
+  background-color: chartreuse;
+}
+
+.stats {
+  width: 80%;
+  height: 10%;
+  flex-direction: column;
+}
+.stats-name,
+.stats-value {
+  width: 100%;
+  height: 100%;
+}
+
+.game-board {
+  width: 82%;
+  height: 85%;
+  background-color: cyan;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.card {
+  width: 15%;
+  height: 30%;
+}
+
+.front, .back {
+  width: 100%;
+  height: 100%;
+}
+.back {
+  background-color: hotpink;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+.my-modal {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  z-index: 2;
+}
+
+.modal-body {
+  width: 50%;
+  height: 50%;
+  flex-flow: column wrap;
+  background-color: rebeccapurple;
+}
+
+.modal-title,
+.modal-button {
+  width: 80%;
+  height: 15%;
+  background-color: white;
+}
+.modal-content {
+  width: 80%;
+  height: 50%;
+  background-color: white;
+
+}
+.modal-button {
+  color: white;
+  font-size: 3vmin;
+  font-weight: bold;
+  background-color: blue;
+  border-radius: 15px;
+}
+
+.modal-button:hover {
+  transform: scale(1.2);
+}
+
+.hidden {
+  display: none;
+}
