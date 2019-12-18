@@ -1,11 +1,13 @@
 $(document).ready(initializeApp);
+const numberOfCards = 18;
+const maxMatch = 9;
+const backgroundPictureUrl = 'url("./assets/images/bowser-red-face.png")';
+
 let gameRound = 1;
 let currentMatch = null;
 let numberOfAttempts = null;
 let accuracy = null;
-const numberOfCards = 18;
-const maxMatch = null;
-const backgroundPictureUrl = 'url("./assets/images/bowser-red-face.png")';
+let clickedCards = [];
 
 function initializeApp(){
   addClickHandler();
@@ -24,6 +26,7 @@ function newGame(){
   currentMatch = null;
   numberOfAttempts = null;
   accuracy = null;
+  clickedCards = [];
 
   hideModal();
 
@@ -34,47 +37,60 @@ function newGame(){
                           .css({
                             'background-color': 'white',
                             'background-image': backgroundPictureUrl,
-                            'background-size': 'contain',
+                            'background-size': '100% 100%',
                             'background-position': 'center',
                             'background-repeat': 'no-repeat'});
     $card.append($front,$back);
     $gameBoard.append($card);
   }
 }
-
-function hideModal(){
-  $('.my-modal').addClass('hidden');
-}
-function showModal(){
-  $('.my-modal').removeClass('hidden');
-}
-
-function handleClick(){
-  checkMatch();
-  if(currentMatch === maxMatch){
+function handleClick() {
+  updateStats();
+  if (currentMatch === maxMatch) {
     showModal();
+    return;
+  }
+  if (clickedCards.length !== 2) {
+    clickedCards.push('hi');
+  } else {
+
+    clickedCards = [];
   }
 }
 
-function checkMatch(){
-  console.log('checking cards...');
+const hideModal = () => {
+  $('.my-modal').addClass('hidden');
+}
+const showModal = () => {
+  $('.my-modal').removeClass('hidden');
+}
+
+const updateStats = () => {
+  console.log('updating stats...');
   updateMatch();
   updateAttempts();
   updateAccuracy();
 }
 
-function updateMatch(){
+const updateMatch = () => {
   currentMatch++;
+  $('#current-match').text(currentMatch);
 }
-function updateAttempts(){
+
+const updateAttempts = () => {
   numberOfAttempts++;
-  $('#')
+  $('#number-of-attempts').text(numberOfAttempts)
 }
-function updateAccuracy(){
+
+const updateAccuracy = () => {
   if(numberOfAttempts===0){
     $('#accuracy').text('0 %');
   } else {
-    accuracy = currentMatch/numberOfAttempts;
+    accuracy = currentMatch/numberOfAttempts * 100;
     $('#accuracy').text(accuracy+' %');
   }
+}
+
+const checkCardsMatch = () => {
+  console.log("checking match");
 }
