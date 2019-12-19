@@ -1,68 +1,75 @@
 $(document).ready(initializeApp);
 const numberOfCards = 18;
-const maxMatch = 9;
-const backgroundPictureUrl = 'url("./assets/images/bowser-red-face.png")';
+const maxMatch = 2;
+const marioEnemies = [];
 
-let gameRound = 1;
-let currentMatch = null;
-let numberOfAttempts = null;
-let accuracy = null;
+let gameRound = 0;
+let currentMatch = 0;
+let numberOfAttempts = 0;
+let accuracy = 0;
 let clickedCards = [];
-
-function initializeApp(){
+// bullet-bill, chain-chomp, boo, bob-omb, cheep-cheep, koopa-troopa,
+// buzzy-beetle, blooper, goomba, piranha plant, kamek, thwomp,
+// shy-guy, podoboo
+function initializeApp() {
   addClickHandler();
   newGame();
 }
 
-function addClickHandler(){
-  $('#reset-button').on('click', newGame);
+const addClickHandler = () => {
+  $('.my-body').on('click', '#reset-button', newGame);
   $('#game-board').on('click', '.card', handleClick);
 }
 
-function newGame(){
+const newGame = () => {
+  console.log('creating new game...');
   let $gameBoard = $('#game-board');
   $gameBoard.empty();
-  gameRound = 1;
-  currentMatch = null;
-  numberOfAttempts = null;
-  accuracy = null;
+  gameRound++;
+  currentMatch = 0;
+  numberOfAttempts = 0;
+  accuracy = 0;
   clickedCards = [];
 
   hideModal();
 
   for (let index = 0; index < numberOfCards; index++) {
-    let $card = $('<div>').addClass('card');
-    let $front = $('<div>').addClass('front');
-    let $back = $('<div>').addClass('back')
-                          .css({
-                            'background-color': 'white',
-                            'background-image': backgroundPictureUrl,
-                            'background-size': '100% 100%',
-                            'background-position': 'center',
-                            'background-repeat': 'no-repeat'});
-    $card.append($front,$back);
-    $gameBoard.append($card);
+    let card = new Card('front card url should be here');
+    card.render();
   }
+  updateStats();
 }
-function handleClick() {
+
+const handleClick = (event) => {
+  let $clickedCard = $(event.currentTarget);
+  $clickedCard.find('.back').addClass('hidden');
+
+  clickedCards.push('hi');
+  console.log(clickedCards);
+  if (clickedCards.length === 2){
+    checkCardsMatch();
+    clickedCards = [];
+  }
   updateStats();
   if (currentMatch === maxMatch) {
     showModal();
-    return;
-  }
-  if (clickedCards.length !== 2) {
-    clickedCards.push('hi');
-  } else {
-
-    clickedCards = [];
   }
 }
 
 const hideModal = () => {
-  $('.my-modal').addClass('hidden');
+  $('.my-modal').remove();
 }
+
 const showModal = () => {
-  $('.my-modal').removeClass('hidden');
+  let $modal = $('<div>').addClass('my-modal');
+  let $modalBody = $('<div>').addClass('modal-body');
+  let $modalTitle = $('<div>').addClass('modal-title').text('You are the winner!');
+  let $modalContent = $('<div>').addClass('modal-content').text(`You won Game Round ${gameRound}`);
+  let $modalButton = $('<div>').addClass('modal-button').attr('id', 'reset-button').text('Click Here to Start New Game');
+
+  $modalBody.append($modalTitle, $modalContent, $modalButton);
+  $modal.append($modalBody);
+  $('.my-body').append($modal);
 }
 
 const updateStats = () => {
@@ -70,27 +77,33 @@ const updateStats = () => {
   updateMatch();
   updateAttempts();
   updateAccuracy();
+  updateGameRound();
 }
 
 const updateMatch = () => {
-  currentMatch++;
   $('#current-match').text(currentMatch);
 }
 
 const updateAttempts = () => {
-  numberOfAttempts++;
   $('#number-of-attempts').text(numberOfAttempts)
 }
 
 const updateAccuracy = () => {
   if(numberOfAttempts===0){
-    $('#accuracy').text('0 %');
+    $('#accuracy').text('0%');
   } else {
-    accuracy = currentMatch/numberOfAttempts * 100;
-    $('#accuracy').text(accuracy+' %');
+    accuracy = (currentMatch/numberOfAttempts * 100).toFixed(1);
+    $('#accuracy').text(accuracy+'%');
   }
+}
+const updateGameRound = () => {
+  $('#game-round').text(gameRound);
 }
 
 const checkCardsMatch = () => {
   console.log("checking match");
+  if (clickedCards[0] === clickedCards[1]){
+    currentMatch++;
+  }
+  numberOfAttempts++;
 }

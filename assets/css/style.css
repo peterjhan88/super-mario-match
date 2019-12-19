@@ -2,11 +2,14 @@
   box-sizing: border-box;
   margin: 0;
   border: 1px solid black;
+  color: white;
+  font-size: 2vmin;
 }
 
 .my-body {
   width: 100%;
   height: 100vh;
+  background-image: url('../images/super-mario-bros-level-background-5.png');
 }
 
 .my-body,
@@ -37,14 +40,14 @@
 .my-header {
   width: 100%;
   height: 15%;
-  background-color: red;
+  /* background-color: red; */
 }
 
 .my-aside {
   width: 18%;
   height: 85%;
   flex-flow: row wrap;
-  background-color: chartreuse;
+  /* background-color: chartreuse; */
 }
 
 .stats {
@@ -61,28 +64,39 @@
 .game-board {
   width: 82%;
   height: 85%;
-  background-color: cyan;
   flex-flow: row wrap;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
 }
 
 .card {
   width: 15%;
   height: 30%;
+  border: 50px solid transparent;
 }
 
 .front, .back {
   width: 100%;
   height: 100%;
 }
+
 .back {
-  background-color: hotpink;
+  background-color: white;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
   position: absolute;
   top: 0;
+  left: 0;
   z-index: 1;
 }
 
+.front {
+  background-color: hotpink;
+}
+
 .my-modal {
+  color: black;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -91,19 +105,21 @@
 }
 
 .modal-body {
+  color: black;
   width: 50%;
   height: 50%;
   flex-flow: column wrap;
   background-color: rebeccapurple;
 }
 
-.modal-title,
-.modal-button {
+.modal-title {
+  color: black;
   width: 80%;
   height: 15%;
   background-color: white;
 }
 .modal-content {
+  color: black;
   width: 80%;
   height: 50%;
   background-color: white;
@@ -111,6 +127,8 @@
 }
 .modal-button {
   color: white;
+  width: 80%;
+  height: 15%;
   font-size: 3vmin;
   font-weight: bold;
   background-color: blue;
