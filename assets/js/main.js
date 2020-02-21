@@ -1,7 +1,6 @@
 $(document).ready(initializeApp);
 const numberOfPicture = 9;
 const maxMatch = 9;
-const $gameBoard = $('#game-board');
 const marioCharacters = [
   'banzai-bill.png',
   'blooper.png',
@@ -45,11 +44,12 @@ function initializeApp() {
 }
 
 const addClickHandler = () => {
-  $('.my-body').on('click', '#reset-button', newGame);
+  $('.body').on('click', '#reset-button', newGame);
   $('#game-board').on('click', '.card', handleClick);
 }
 
 const newGame = () => {
+  let $gameBoard = $('#game-board');
   $gameBoard.empty();
   gameRound++;
   currentMatch = 0;
@@ -70,7 +70,6 @@ const handleClick = (event) => {
 
   clickedCards.push($clickedCard);
   if (clickedCards.length === 2){
-    $gameBoard.addClass('disable-click');
     checkCardsMatch();
   }
   updateStats();
@@ -80,11 +79,11 @@ const handleClick = (event) => {
 }
 
 const hideModal = () => {
-  $('.my-modal').remove();
+  $('.modal').remove();
 }
 
 const showModal = () => {
-  let $modal = $('<div>').addClass('my-modal');
+  let $modal = $('<div>').addClass('modal');
   let $modalBody = $('<div>').addClass('modal-body');
   let $modalTitle = $('<div>').addClass('modal-title').text('You are the winner!');
   let $modalContent = $('<div>').addClass('modal-content').text(`You won Game Round ${gameRound}`);
@@ -92,7 +91,7 @@ const showModal = () => {
 
   $modalBody.append($modalTitle, $modalContent, $modalButton);
   $modal.append($modalBody);
-  $('.my-body').append($modal);
+  $('.body').append($modal);
 }
 
 const updateStats = () => {
@@ -123,16 +122,15 @@ const updateGameRound = () => {
 }
 
 const checkCardsMatch = () => {
+  let $gameBoard = $('#game-board');
   let $firstCard = $(clickedCards[0]);
   let $secondCard = $(clickedCards[1]);
   if ($firstCard.find('.front').css('background-image') === $secondCard.find('.front').css('background-image')){
-    console.log('match!');
     $firstCard.addClass('disable-click');
     $secondCard.addClass('disable-click');
-    $gameBoard.removeClass('disable-click');
     currentMatch++;
   } else {
-    console.log('No..... :(');
+    $gameBoard.addClass('disable-click');
     setTimeout(()=>{
       $gameBoard.removeClass('disable-click');
       $firstCard.removeClass('disable-click');
