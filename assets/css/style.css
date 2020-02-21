@@ -40,14 +40,12 @@
 .header {
   width: 100%;
   height: 15%;
-  /* background-color: red; */
 }
 
 .aside {
   width: 18%;
   height: 85%;
   flex-flow: row wrap;
-  /* background-color: chartreuse; */
 }
 
 .stats {
