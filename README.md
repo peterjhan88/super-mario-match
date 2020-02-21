@@ -28,12 +28,12 @@ A JavaScript project which allows a user to enjoy a memory match game themed in 
 git clone https://github.com/peterjhan88/super-mario-match
 
 ```
-1. Move to cloned folder
+2. Move to cloned folder
 ```
 
 cd super-mario-match
 
 ```
-1. Right click and open the index.html file in your default browser
-1. Play
+3. Right click and open the index.html file in your default browser
+4. Play
 
