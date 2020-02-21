@@ -1,16 +1,44 @@
 $(document).ready(initializeApp);
-const numberOfCards = 18;
-const maxMatch = 2;
-const marioEnemies = [];
+const numberOfPicture = 9;
+const maxMatch = 9;
+const $gameBoard = $('#game-board');
+const marioCharacters = [
+  'banzai-bill.png',
+  'blooper.png',
+  'bob-omb.png',
+  'boo.png',
+  'bowser.png',
+  'bullet-bill.png',
+  'buzzy-beetle.png',
+  'chain-chomp.png',
+  'cheep-cheep.png',
+  'deep-cheep.png',
+  'fire-piranha-plant.png',
+  'goomba-mario.png',
+  'goomba.png',
+  'kamek.png',
+  'king-boo.png',
+  'koopa-troopa-green.png',
+  'koopa-troopa-red.png',
+  'luigi.png',
+  'mario.png',
+  'peach.png',
+  'piranha-plant.png',
+  'porcupuffer.png',
+  'rosalina.png',
+  'shy-guy.png',
+  'spiny.png',
+  'toad.png',
+  'toadette.png'
+];
 
 let gameRound = 0;
 let currentMatch = 0;
 let numberOfAttempts = 0;
 let accuracy = 0;
 let clickedCards = [];
-// bullet-bill, chain-chomp, boo, bob-omb, cheep-cheep, koopa-troopa,
-// buzzy-beetle, blooper, goomba, piranha plant, kamek, thwomp,
-// shy-guy, podoboo
+
+
 function initializeApp() {
   addClickHandler();
   newGame();
@@ -22,8 +50,6 @@ const addClickHandler = () => {
 }
 
 const newGame = () => {
-  console.log('creating new game...');
-  let $gameBoard = $('#game-board');
   $gameBoard.empty();
   gameRound++;
   currentMatch = 0;
@@ -33,22 +59,19 @@ const newGame = () => {
 
   hideModal();
 
-  for (let index = 0; index < numberOfCards; index++) {
-    let card = new Card('front card url should be here');
-    card.render();
-  }
+  createCards();
   updateStats();
 }
 
 const handleClick = (event) => {
   let $clickedCard = $(event.currentTarget);
+  $clickedCard.addClass('disable-click');
   $clickedCard.find('.back').addClass('hidden');
 
-  clickedCards.push('hi');
-  console.log(clickedCards);
+  clickedCards.push($clickedCard);
   if (clickedCards.length === 2){
+    $gameBoard.addClass('disable-click');
     checkCardsMatch();
-    clickedCards = [];
   }
   updateStats();
   if (currentMatch === maxMatch) {
@@ -73,7 +96,6 @@ const showModal = () => {
 }
 
 const updateStats = () => {
-  console.log('updating stats...');
   updateMatch();
   updateAttempts();
   updateAccuracy();
@@ -101,9 +123,56 @@ const updateGameRound = () => {
 }
 
 const checkCardsMatch = () => {
-  console.log("checking match");
-  if (clickedCards[0] === clickedCards[1]){
+  let $firstCard = $(clickedCards[0]);
+  let $secondCard = $(clickedCards[1]);
+  if ($firstCard.find('.front').css('background-image') === $secondCard.find('.front').css('background-image')){
+    console.log('match!');
+    $firstCard.addClass('disable-click');
+    $secondCard.addClass('disable-click');
+    $gameBoard.removeClass('disable-click');
     currentMatch++;
+  } else {
+    console.log('No..... :(');
+    setTimeout(()=>{
+      $gameBoard.removeClass('disable-click');
+      $firstCard.removeClass('disable-click');
+      $secondCard.removeClass('disable-click');
+      $firstCard.find('.back').removeClass('hidden');
+      $secondCard.find('.back').removeClass('hidden');
+    }, 2500)
   }
+  clickedCards = [];
   numberOfAttempts++;
+}
+
+const pickRandomCards = howMany => {
+  let randomCards = [];
+  while (randomCards.length < howMany) {
+    let randomNum = Math.floor(Math.random() * marioCharacters.length);
+    let selected = marioCharacters[randomNum]
+    if (!randomCards.includes(selected)) {
+      randomCards.push(selected);
+    }
+  }
+  return randomCards;
+}
+
+const shuffleCards = arrayOfCards => {
+  let copied = arrayOfCards.concat(arrayOfCards);
+  let shuffledCards = [];
+  while (copied.length>0) {
+    let randomNum = Math.floor(Math.random() * copied.length);
+    shuffledCards.push(...copied.splice(randomNum, 1));
+  }
+  return shuffledCards;
+}
+
+const createCards = () => {
+  let randomPictures = pickRandomCards(numberOfPicture);
+  let shuffledCards = shuffleCards(randomPictures);
+
+  for (let index = 0; index < shuffledCards.length; index++) {
+    let card = new Card(shuffledCards[index]);
+    card.render();
+  }
 }

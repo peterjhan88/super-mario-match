@@ -6,20 +6,20 @@
   font-size: 2vmin;
 }
 
-.my-body {
+.body {
   width: 100%;
   height: 100vh;
   background-image: url('../images/super-mario-bros-level-background-5.png');
 }
 
-.my-body,
-.my-header,
-.my-aside,
+.body,
+.header,
+.aside,
 .game-board,
 .stats,
 .stats-name,
 .stats-value,
-.my-modal,
+.modal,
 .modal-body,
 .modal-title,
 .modal-content,
@@ -29,21 +29,21 @@
   align-items: center;
 }
 
-.my-body, .card {
+.body, .card {
   position: relative;
 }
 
-.my-body {
+.body {
   flex-flow: row wrap;
 }
 
-.my-header {
+.header {
   width: 100%;
   height: 15%;
   /* background-color: red; */
 }
 
-.my-aside {
+.aside {
   width: 18%;
   height: 85%;
   flex-flow: row wrap;
@@ -80,6 +80,14 @@
   height: 100%;
 }
 
+.front {
+  background-position: center;
+  object-fit: contain;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #fff;
+}
+
 .back {
   background-color: white;
   background-size: 100% 100%;
@@ -91,11 +99,11 @@
   z-index: 1;
 }
 
-.front {
-  background-color: hotpink;
+.disable-click {
+  pointer-events: none;
 }
 
-.my-modal {
+.modal {
   color: black;
   position: absolute;
   width: 100%;
