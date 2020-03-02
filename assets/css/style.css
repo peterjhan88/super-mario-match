@@ -2,7 +2,6 @@
   box-sizing: border-box;
   margin: 0;
   color: white;
-  font-size: 2vmin;
 }
 
 .body {
@@ -39,12 +38,14 @@
 .header {
   width: 100%;
   height: 15%;
+  font-size: 7vmin;
 }
 
 .aside {
   width: 18%;
   height: 85%;
   flex-flow: row wrap;
+  font-size: 5vmin;
 }
 
 .stats {
@@ -56,6 +57,10 @@
 .stats-value {
   width: 100%;
   height: 100%;
+}
+
+.stats-value {
+  font-size: 3vmin;
 }
 
 .game-board {
@@ -133,10 +138,10 @@
 .modal-title,
 .modal-button {
   color: red;
-  text-shadow: -1px 1px white,
-                1px 1px white,
-                1px 1px white,
-                1px -1px white;
+  text-shadow: -1px 1px 0 white,
+                1px 1px 0 white,
+                1px -1px 0 white,
+                -1px -1px 0 white;
 }
 
 .modal-title {

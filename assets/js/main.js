@@ -1,6 +1,6 @@
 $(document).ready(initializeApp);
 const numberOfPicture = 9;
-const maxMatch = 1;
+const maxMatch = 9;
 const marioCharacters = [
   'banzai-bill.png',
   'blooper.png',
@@ -136,7 +136,7 @@ const checkCardsMatch = () => {
       $secondCard.removeClass('disable-click');
       $firstCard.find('.back').removeClass('hidden');
       $secondCard.find('.back').removeClass('hidden');
-    }, 2500)
+    }, 1500);
   }
   clickedCards = [];
   numberOfAttempts++;
@@ -172,4 +172,8 @@ const createCards = () => {
     let card = new Card(shuffledCards[index]);
     card.render();
   }
+  $('.back').addClass('hidden');
+  setTimeout(()=>{
+    $('.back').removeClass('hidden');
+  }, 1500);
 }
