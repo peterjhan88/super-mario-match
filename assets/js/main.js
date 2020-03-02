@@ -1,6 +1,6 @@
 $(document).ready(initializeApp);
 const numberOfPicture = 9;
-const maxMatch = 9;
+const maxMatch = 1;
 const marioCharacters = [
   'banzai-bill.png',
   'blooper.png',
@@ -85,11 +85,10 @@ const hideModal = () => {
 const showModal = () => {
   let $modal = $('<div>').addClass('modal');
   let $modalBody = $('<div>').addClass('modal-body');
-  let $modalTitle = $('<div>').addClass('modal-title').text('You are the winner!');
-  let $modalContent = $('<div>').addClass('modal-content').text(`You won Game Round ${gameRound}`);
+  let $modalTitle = $('<div>').addClass('modal-title').text(`Round ${gameRound}`);
   let $modalButton = $('<div>').addClass('modal-button').attr('id', 'reset-button').text('Click Here to Start New Game');
 
-  $modalBody.append($modalTitle, $modalContent, $modalButton);
+  $modalBody.append($modalTitle, $modalButton);
   $modal.append($modalBody);
   $('.body').append($modal);
 }
