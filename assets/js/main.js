@@ -85,11 +85,10 @@ const hideModal = () => {
 const showModal = () => {
   let $modal = $('<div>').addClass('modal');
   let $modalBody = $('<div>').addClass('modal-body');
-  let $modalTitle = $('<div>').addClass('modal-title').text('You are the winner!');
-  let $modalContent = $('<div>').addClass('modal-content').text(`You won Game Round ${gameRound}`);
+  let $modalTitle = $('<div>').addClass('modal-title').text(`Round ${gameRound}`);
   let $modalButton = $('<div>').addClass('modal-button').attr('id', 'reset-button').text('Click Here to Start New Game');
 
-  $modalBody.append($modalTitle, $modalContent, $modalButton);
+  $modalBody.append($modalTitle, $modalButton);
   $modal.append($modalBody);
   $('.body').append($modal);
 }
@@ -137,7 +136,7 @@ const checkCardsMatch = () => {
       $secondCard.removeClass('disable-click');
       $firstCard.find('.back').removeClass('hidden');
       $secondCard.find('.back').removeClass('hidden');
-    }, 2500)
+    }, 1500);
   }
   clickedCards = [];
   numberOfAttempts++;
@@ -173,4 +172,8 @@ const createCards = () => {
     let card = new Card(shuffledCards[index]);
     card.render();
   }
+  $('.back').addClass('hidden');
+  setTimeout(()=>{
+    $('.back').removeClass('hidden');
+  }, 1500);
 }
