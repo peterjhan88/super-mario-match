@@ -168,7 +168,9 @@
   display: none;
 }
 
-@media screen and (orientation : portrait) and (max-width: 414px) {
+@media screen
+and (orientation : portrait)
+and (max-width: 414px) {
   .body {
     align-items: flex-start;
   }
@@ -200,7 +202,9 @@
   }
 }
 
-@media screen and (orientation : landscape) and (max-width: 736px) {
+@media screen
+and (orientation : landscape)
+and (max-width: 736px) {
   .header {
     display: none;
   }
@@ -224,7 +228,9 @@
   }
 }
 
-@media screen and (orientation : portrait) and (max-width: 1024px) {
+@media screen
+and (orientation : portrait)
+and (max-width: 1024px) {
   .header {
     display: none;
   }
@@ -236,7 +242,7 @@
   }
 
   .game-board {
-    width: 91%;
+    width: 95%;
     justify-content: space-around;
     align-items: flex-start;
   }
@@ -247,14 +253,52 @@
   }
 
   .card {
-    width: 180px;
+    width: 200px;
     height: 120px;
   }
 }
 
-@media screen and (orientation : landscape) and (max-width: 1024px) {
+@media screen
+and (orientation : landscape)
+and (max-width: 1024px) {
 .card {
     width: 130px;
     height: 180px;
+  }
+}
+
+@media only screen
+and (orientation : portrait)
+and (min-device-width : 375px)
+and (max-device-width : 667px) {
+  .game-board {
+    width: 95%;
+  }
+  .aside {
+    margin-top: 30px;
+    height: 5vh;
+  }
+  .stats-value {
+    font-size: 16px;
+  }
+  .card {
+    width: 100px;
+    height: 90px;
+  }
+}
+
+@media only screen
+and (orientation : landscape)
+and (min-device-width : 375px)
+and (max-device-width : 667px) {
+  .game-board {
+    width: 85%;
+  }
+  .stats-value {
+    font-size: 14px;
+  }
+  .card {
+    width: 90px;
+    height: 100px;
   }
 }
